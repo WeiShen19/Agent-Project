@@ -1,0 +1,58 @@
+# NVIDIA NeMo Agent Toolkit 黑客松配置
+# 支持用户自定义OpenAI兼容API
+
+general:
+  use_uvloop: true
+
+functions:
+  tavily_search:
+    _type: tavily_internet_search
+    description: "使用Tavily API进行实时网络搜索"
+  doca_documents:
+    _type: text_file_ingest
+    ingest_glob: src/nat/tool/data/*.txt
+    description: "Search for information about 公关话术或者公关方案. For any questions about 公关话术或者公关方案, you must use this tool!"
+    embedder_name: nv-embedqa-e5-v5
+    chunk_size: 512
+  current_datetime:
+    _type: current_datetime
+    description: "获取当前日期和时间"
+
+llms:
+  default_llm:
+    _type: openai
+    model_name: "qwen-plus"
+    api_key: ""
+    base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    temperature: 0.7
+    max_tokens: 2288
+    
+embedders:
+  nv-embedqa-e5-v5:
+    _type: nim
+    model_name: nvidia/nv-embedqa-e5-v5
+    base_url: "https://integrate.api.nvidia.com/v1"
+    api_key: ""
+
+workflow:
+  _type: react_agent
+  tool_names:
+    - tavily_search
+    - current_datetime
+    - doca_documents
+  llm_name: default_llm
+  verbose: true   
+  parse_agent_response_max_retries: 3 
+  max_iterations: 10     
+  prompt: |
+    你是一位专门设计用于新能源汽车品牌舆情分析及公关方案智能助手，你的工作是帮助用户发现品牌舆情，并输出公关方案。
+    回答的内容要结合实际的舆情评论或者评价等等。
+    回复语言的语种跟随用户输入的语言。
+    You have access to these tools: {tool_names}.
+    Detailed tool descriptions: {tools}
+
+    When answering the user:
+    1. Think step by step.
+    2. If you need any tool, output valid JSON to call it.
+    3. After receiving the tool result, continue until you can give a final answer.
+
