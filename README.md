@@ -43,6 +43,7 @@ cd NeMo-Agent-Toolkit
 
 ### MCP工具
 ./NeMo-Agent-Toolkit/src/nat/tool
+
 ./packages/aiqtoolkit_langchain/src/aiq/plugins/langchain/tools/tavily_internet_search.py
 
 ### Knowledge Docs
