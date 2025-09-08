@@ -17,7 +17,7 @@
 - **Node.js**: 18+
 - **Git**: 最新版本
 - **操作系统**: Windows 10+/macOS 10.15+/Ubuntu 20.04+
-- **环境依赖**: ./NeMo-Agent-Toolkit/requirements.txt
+- **环境依赖**: ./requirements.txt
 
 ### 🎮 启动系统
 
