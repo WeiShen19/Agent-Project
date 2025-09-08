@@ -39,14 +39,14 @@ cd NeMo-Agent-Toolkit
 ## 📁 项目核心代码
 
 ### Config配置
-./hackathon_aiqtoolkit_agent/NeMo-Agent-Toolkit/configs/hackathon_config.yml
+./NeMo-Agent-Toolkit/configs/hackathon_config.yml
 
 ### MCP工具
-./hackathon_aiqtoolkit_agent/NeMo-Agent-Toolkit/src/nat/tool
-./hackathon_aiqtoolkit_agent/packages/aiqtoolkit_langchain/src/aiq/plugins/langchain/tools/tavily_internet_search.py
+./NeMo-Agent-Toolkit/src/nat/tool
+./packages/aiqtoolkit_langchain/src/aiq/plugins/langchain/tools/tavily_internet_search.py
 
 ### Knowledge Docs
-./hackathon_aiqtoolkit_agent/NeMo-Agent-Toolkit/src/nat/tool/data
+./NeMo-Agent-Toolkit/src/nat/tool/data
 
 
 ## 📚 相关资源
